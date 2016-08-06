@@ -11,13 +11,43 @@ public class Computer {
 	private static String CURRENT_GUESS_WORD = "";
 	private static String CHOSEN_WORD;
 	private Random randomGenerator = new Random();
+	private static boolean GAME_WON = false;
 
 	public Computer(int length) {
 
 		this.length = length;
 
 		AVAILABLE_KEYS = importKeysFromAnagram();
+		
+		selectChosenWord();
 
+	}
+	
+	public String getChosenWord(){
+		
+		
+		if(GAME_WON)
+			return CHOSEN_WORD;
+		else
+			return "Game not won yet";
+	}
+
+	private void selectChosenWord() {
+		// TODO Auto-generated method stub
+		
+		int indexOfAvailableKeys = randomGenerator.nextInt(AVAILABLE_KEYS.size());
+
+		ArrayList<String> list = AnagramUtil.getHashMap().get(AVAILABLE_KEYS.get(indexOfAvailableKeys));
+
+		int indexOfStringInAnagramMap = randomGenerator.nextInt(list.size());
+		String guessWord = list.get(indexOfStringInAnagramMap);
+
+		if(hasRepeatedCharacters(guessWord))
+			selectChosenWord();
+		else
+			CHOSEN_WORD = guessWord;
+		
+		
 	}
 
 	private ArrayList<String> importKeysFromAnagram() {
@@ -101,7 +131,10 @@ public class Computer {
 	public int giveResponse(String guessWord) {
 
 		if (CHOSEN_WORD.equalsIgnoreCase(guessWord))
+		{
+			GAME_WON = true;
 			return -1;
+		}
 
 		else
 			return getNumberOfMatchingLetters(guessWord);
