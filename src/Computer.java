@@ -1,12 +1,14 @@
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class Computer {
 
 	int length;
-	private static Set<String> AVAILABLE_KEYS = new HashSet<>();
+	private static List<String> AVAILABLE_KEYS = new ArrayList()<>();
 	private static String CURRENT_GUESS_WORD = "";
 	private static String CHOSEN_WORD;
+	private Random randomGenerator = new Random();
 	
 	
 	public Computer(int length){
@@ -18,14 +20,37 @@ public class Computer {
 		
 	}
 
-	private Set<String> importKeysFromAnagram() {
+	private List<String> importKeysFromAnagram() {
 		// TODO Auto-generated method stub
 		
 		
 		return AnagramUtil.getHashMap().keySet();
 	}
 	
-	
+	public String guessWord(){
+		
+		int indexOfAvailableKeys = randomGenerator.nextInt(AVAILABLE_KEYS.size());
+		
+		ArrayList<String> list = AnagramUtil.getHashMap().get(AVAILABLE_KEYS.get(index));
+		
+		int indexOfStringInAnagramMap = randomGenerator.nextInt(list.size());
+		String guessWord = list.get(indexOfStringInAnagramMap);
+		
+		
+		
+		return guessWord;
+		
+	}
+	private boolean hasRepeatedCharacters(String guessWord) {
+		// TODO Auto-generated method stub
+		
+		for(char c: guessWord.toCharArray()){
+			if(guessWord.indexOf(c) != guessWord.lastIndexOf(c))
+				return true;
+		}
+		return false;
+	}
+
 	public int giveResponse(String guessWord){
 		
 		if(CHOSEN_WORD.equalsIgnoreCase(guessWord))
