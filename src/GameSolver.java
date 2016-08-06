@@ -5,7 +5,7 @@ public class GameSolver {
 	
 	public static int length = 0;
 	public GameSolver(int i){
-		 this.length = i + 4;
+		 this.length = i + 3;
 	}
 	public String getDistinctWord(String word){
 		String answer = "";

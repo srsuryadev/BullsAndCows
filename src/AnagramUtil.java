@@ -9,7 +9,7 @@ import java.util.List;
 
 public class AnagramUtil {
 	
-	public static String FILE_NAME = "";
+	public static String FILE_NAME = "sowpods.txt";
 	public static String STAR = "*"; 
 	public static HashMap<String, ArrayList<String> > hm;
 	

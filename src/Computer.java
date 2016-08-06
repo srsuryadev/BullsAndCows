@@ -17,13 +17,33 @@ public class Computer {
 		this.length = length;
 
 		AVAILABLE_KEYS = importKeysFromAnagram();
+		
+		updateChosenWord();
+	}
 
+	private void updateChosenWord() {
+		// TODO Auto-generated method stub
+		int indexOfAvailableKeys = randomGenerator.nextInt(AVAILABLE_KEYS.size());
+
+		ArrayList<String> list = AnagramUtil.getHashMap().get(AVAILABLE_KEYS.get(indexOfAvailableKeys));
+
+		int indexOfStringInAnagramMap = randomGenerator.nextInt(list.size());
+		String guessWord = list.get(indexOfStringInAnagramMap);
+
+		if(hasRepeatedCharacters(guessWord))
+			updateChosenWord();
+		else
+		{
+			CHOSEN_WORD = guessWord;
+		}
+		
+		
 	}
 
 	private ArrayList<String> importKeysFromAnagram() {
 		// TODO Auto-generated method stub
 
-		return (ArrayList<String>) AnagramUtil.getHashMap().keySet();
+		return new ArrayList(AnagramUtil.getHashMap().keySet());
 	}
 
 	public void updateResponse(int match) {
