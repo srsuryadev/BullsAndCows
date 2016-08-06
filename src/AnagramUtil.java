@@ -9,6 +9,9 @@ import java.util.List;
 
 public class AnagramUtil {
 	
+	
+	public static String FILE_NAME = "";
+	
 	public static HashMap<String, ArrayList<String> > hm;
 	
 	public static HashMap<String, ArrayList<String> > getHash(){
@@ -17,14 +20,30 @@ public class AnagramUtil {
 	}
 	
 	
+	
+	public static String convertToRegEx(String word){
+		String regex="";
+		for(int i =0;i<word.length();i++){
+			regex += "*" + word.charAt(i);
+		}
+		regex+= "*";
+		return regex;
+	}
+	
+	
+	public static ArrayList<String> generateRegEx(ArrayList<String> lst){
+		ArrayList<String> regexList = new ArrayList<String>();
+		for(int i = 0; i<lst.size(); i++){
+			regexList.add(convertToRegEx(lst.get(i)));
+		}
+		return regexList;
+	}
 
 	
 	
 	public static boolean createHashMap(int num) throws FileNotFoundException, IOException{
-		
-		String file = "";
 		HashMap<String, ArrayList<String>> hm = getHash();
-		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+		try (BufferedReader br = new BufferedReader(new FileReader(FILE_NAME))) {
 		    String line;
 		    while ((line = br.readLine()) != null) {
 		    	if(line.length()==num){
