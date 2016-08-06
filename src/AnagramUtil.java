@@ -9,18 +9,14 @@ import java.util.List;
 
 public class AnagramUtil {
 	
-	
 	public static String FILE_NAME = "";
 	public static String STAR = "*"; 
-	
 	public static HashMap<String, ArrayList<String> > hm;
 	
 	public static HashMap<String, ArrayList<String> > getHash(){
 		if(hm!= null) return hm;
 		return new HashMap<String, ArrayList<String> >();
 	}
-	
-	
 	
 	public static String convertToRegEx(String word){
 		String regex="";
@@ -32,7 +28,6 @@ public class AnagramUtil {
 		return regex;
 	}
 	
-	
 	public static ArrayList<String> generateRegEx(ArrayList<String> lst){
 		ArrayList<String> regexList = new ArrayList<String>();
 		for(int i = 0; i<lst.size(); i++){
@@ -41,8 +36,6 @@ public class AnagramUtil {
 		return regexList;
 	}
 
-	
-	
 	public static boolean createHashMap(int num) throws FileNotFoundException, IOException{
 		HashMap<String, ArrayList<String>> hm = getHash();
 		try (BufferedReader br = new BufferedReader(new FileReader(FILE_NAME))) {
@@ -61,8 +54,7 @@ public class AnagramUtil {
 		    	}
 		    }
 		}	
-		return true;
-		
+		return true;		
 	}
 	
 	public static HashMap<String, ArrayList<String> > getHashMap(){
@@ -70,8 +62,15 @@ public class AnagramUtil {
 	}
 	
 	public static void main(String[] args){
-		
 		//TEST CODE
+		/*
+		 * Expected output
+		 * 
+		 	*a*a*
+		 	*a*a*a*
+		 	*a*b*
+		 	*a*
+		 */
 		ArrayList<String> lst = new ArrayList<String>();
 		for(int i =0; i<5; i++){
 			lst.add(""); 
