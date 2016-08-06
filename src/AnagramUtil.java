@@ -61,6 +61,33 @@ public class AnagramUtil {
 		return getHash();
 	}
 	
+	public static ArrayList<String> combinations(String word, int length){
+		ArrayList<String> combinations = new ArrayList<String>();
+		ArrayList<String> prevCombinations =  new ArrayList<String>();
+		char[] lettersOfWord = word.toCharArray();
+		String temp;
+		if(length==1){
+			for(int i=0;i<word.length();i++){
+				combinations.add(lettersOfWord[i]+"");
+				//System.out.println(lettersOfWord[i]);
+			}
+			return combinations;
+		}
+		
+		prevCombinations.addAll(combinations(word,length-1));
+		
+		for(int j=0;j<prevCombinations.size();j++){
+			temp = prevCombinations.get(j);
+			for(int i=0;i<word.length();i++){
+				if(lettersOfWord[i]-temp.charAt(temp.length()-1)>0){
+					combinations.add(temp+(""+lettersOfWord[i]));
+				}
+			}
+		}
+		
+		return combinations;
+	}
+	
 	public static void main(String[] args){
 		//TEST CODE
 		/*
