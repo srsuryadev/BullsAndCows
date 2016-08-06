@@ -11,6 +11,7 @@ public class AnagramUtil {
 	
 	
 	public static String FILE_NAME = "";
+	public static String STAR = "*"; 
 	
 	public static HashMap<String, ArrayList<String> > hm;
 	
@@ -23,10 +24,11 @@ public class AnagramUtil {
 	
 	public static String convertToRegEx(String word){
 		String regex="";
+		if(word.length()==0) return regex;
 		for(int i =0;i<word.length();i++){
-			regex += "*" + word.charAt(i);
+			regex += STAR + word.charAt(i);
 		}
-		regex+= "*";
+		regex+= STAR;
 		return regex;
 	}
 	
@@ -67,6 +69,21 @@ public class AnagramUtil {
 		return getHash();
 	}
 	
-	
-
+	public static void main(String[] args){
+		
+		//TEST CODE
+		ArrayList<String> lst = new ArrayList<String>();
+		for(int i =0; i<5; i++){
+			lst.add(""); 
+			lst.add("aa");
+			lst.add("aaa");
+			lst.add("ab");
+			lst.add("a");
+		}
+		lst = generateRegEx(lst);
+		for(int i =0; i<5; i++){
+			System.out.println(lst.get(i));
+		}
+		
+	}
 }
