@@ -5,7 +5,7 @@ import java.util.Random;
 public class Computer {
 
 	int length;
-	private static List<String> AVAILABLE_KEYS = new ArrayList()<>();
+	private static List<String> AVAILABLE_KEYS = new ArrayList<>();
 	private static String CURRENT_GUESS_WORD = "";
 	private static String CHOSEN_WORD;
 	private Random randomGenerator = new Random();
