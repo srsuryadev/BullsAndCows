@@ -74,7 +74,7 @@ public class GameSolver {
 					break;
 				}
 				else{
-					c.updateResponse(Integer.parseInt(response););
+					c.updateResponse(Integer.parseInt(response));
 				}
 			}
 			turn++;
