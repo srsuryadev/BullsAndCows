@@ -9,11 +9,11 @@ import java.util.List;
 
 public class AnagramUtil {
 	
-	public static HashMap<String, List<String> > hm;
+	public static HashMap<String, ArrayList<String> > hm;
 	
-	public static HashMap<String, List<String> > getHash(){
+	public static HashMap<String, ArrayList<String> > getHash(){
 		if(hm!= null) return hm;
-		return new HashMap<String, List<String> >();
+		return new HashMap<String, ArrayList<String> >();
 	}
 	
 	
@@ -23,7 +23,7 @@ public class AnagramUtil {
 	public static boolean createHashMap(int num) throws FileNotFoundException, IOException{
 		
 		String file = "";
-		HashMap<String, List<String>> hm = getHash();
+		HashMap<String, ArrayList<String>> hm = getHash();
 		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
 		    String line;
 		    while ((line = br.readLine()) != null) {
@@ -31,7 +31,7 @@ public class AnagramUtil {
 		    		char[] chars = line.toCharArray();
 		    	    Arrays.sort(chars);
 		    	    String sorted = new String(chars);
-		    	    List<String> lst = new ArrayList<String>();
+		    	    ArrayList<String> lst = new ArrayList<String>();
 		    		if(hm.containsKey(sorted)){
 		    			lst = hm.get(sorted);
 		    		}
@@ -44,7 +44,7 @@ public class AnagramUtil {
 		
 	}
 	
-	public static HashMap<String, List<String> > getHashMap(){
+	public static HashMap<String, ArrayList<String> > getHashMap(){
 		return getHash();
 	}
 	
