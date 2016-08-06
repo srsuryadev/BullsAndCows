@@ -43,5 +43,42 @@ public class GameSolver {
 		return count;
 		
 	}
-
+	
+	public void gameLoop(){
+		System.out.println("WELCOME TO BULLS AND COWS!");
+		Player p = new Player(length);
+		Computer c = new Computer(length);
+		int turn = 0;
+		String guessWord;
+		while(true){
+			System.out.println("TURN "+ turn);
+			if(turn%2 == 0){
+				System.out.println("PLAYER CAN GUESS NOW!");
+				System.out.println("----------------------");
+				guessWord = p.giveGuessWord();
+				int response;
+				if((response = c.giveResponse(guessWord)) == -1) {
+					System.out.println("CONGRATULATIONS YOU WON");
+					break;
+				}
+				System.out.println("COMPUTER RESPONDS : Hey! number of matches: " + response );
+			}
+			else{
+				System.out.println("COMPUTER CAN GUESS NOW!");
+				System.out.println("----------------------");
+				guessWord = c.guessWord(); 
+				System.out.println("COMPUTER GUESSES IT MIGHT BE "+ guessWord);
+				String response = p.giveResponse();
+				if(response.equals("!")){
+					System.out.println("COMPUTER WINS!");
+					break;
+				}
+				else{
+					c.updateResponse(Integer.parseInt(response););
+				}
+			}
+			turn++;
+			
+		}
+	}
 }

@@ -7,6 +7,6 @@ public class TestDriver {
 		Scanner scan = new Scanner(System.in);
 		int lengthOfWord = scan.nextInt();
 		
-		GameSolver = new GameSolver(lengthOfWord);
+		GameSolver gs = new GameSolver(lengthOfWord);
 	}
 }

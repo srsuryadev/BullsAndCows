@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Player {
 	private int lengthOfWord;
 	
-	Player(int length){
+	public Player(int length){
 		lengthOfWord = length;
 	}
 	

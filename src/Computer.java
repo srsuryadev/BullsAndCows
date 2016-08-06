@@ -22,9 +22,7 @@ public class Computer {
 
 	private List<String> importKeysFromAnagram() {
 		// TODO Auto-generated method stub
-		
-		
-		return AnagramUtil.getHashMap().keySet();
+		return (List<String>) AnagramUtil.getHashMap().keySet();
 	}
 	
 	public String guessWord(){
